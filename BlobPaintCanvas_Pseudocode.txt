@@ -1,0 +1,44 @@
+BEGIN PROGRAM BlobPaintCanvas
+
+FUNCTION main
+    Display program description
+
+    Run animated sample simulation with n = 10, t = 300
+    Print coordinates table and canvas statistics for sample
+
+    n  get_valid_canvas_size_from_user(min=2, max=100)
+    t  get_valid_paint_supply_from_user(min=4, max=1000000)
+
+    Initialize n x n grid where each square tracks:
+        current color, total blobs, Blue count, Green count, Red count
+
+    FOR second from 1 to t
+        Drop blob of random color onto random grid coordinate
+        IF all squares painted at least once and not yet reported
+            Print coordinates table and canvas statistics
+            Mark canvas as fully covered
+        END IF
+    END FOR
+
+    Print final coordinates table and canvas statistics
+
+    Prompt user to choose graph mode:
+        1. Hold t constant, vary n across 10 simulations
+        2. Hold n constant, vary t across 10 simulations
+
+    Get starting value and increment for the chosen variable
+
+    FOR simulation from 1 to 10
+        Run non-animated simulation with current n and t
+        Record lowest, average, and highest blob counts per square
+        Advance chosen variable by increment
+    END FOR
+
+    Display scatter plot of lowest, average, and highest blob
+    counts across all 10 simulations with labeled axes and legend
+
+    Wait for user to press ENTER
+END FUNCTION
+
+CALL main
+END PROGRAM
